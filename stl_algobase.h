@@ -105,7 +105,7 @@ inline void swap(_Tp& __a, _Tp& __b) {
 template <class _Tp>
 inline const _Tp& min(const _Tp& __a, const _Tp& __b) {
   __STL_REQUIRES(_Tp, _LessThanComparable);
-  return __b < __a ? __b : __a;
+  return __b < __a ? __b : __a; // possibly faster than __a <= __b ? __a : __b;
 }
 
 template <class _Tp>

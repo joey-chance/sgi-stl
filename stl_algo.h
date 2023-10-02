@@ -100,7 +100,7 @@ inline _InputIter find(_InputIter __first, _InputIter __last,
 {
   while (__first != __last && !(*__first == __val))
     ++__first;
-  return __first;
+  return __first; // returns last_ptr if not found
 }
 
 template <class _InputIter, class _Predicate>
@@ -121,7 +121,7 @@ _RandomAccessIter find(_RandomAccessIter __first, _RandomAccessIter __last,
                        random_access_iterator_tag)
 {
   typename iterator_traits<_RandomAccessIter>::difference_type __trip_count
-    = (__last - __first) >> 2;
+    = (__last - __first) >> 2; // loop unrolling
 
   for ( ; __trip_count > 0 ; --__trip_count) {
     if (*__first == __val) return __first;
